@@ -4,6 +4,8 @@ date: 2025-03-06 20:04:00 +0530
 categories: [Machine Learning, Deep Learning]
 tags: [introduction, artificial-intelligence, machine-learning, deep-learning, python, pytorch]
 author: shamith_watchdogs
+math: true
+mermaid: true
 media_subpath: "/assets/img/intro-to-deep-learning"
 image:
   path: "deep-learning.webp"
@@ -145,3 +147,221 @@ This one is totally optional, you don't need much machine learning knowledge to 
 If you're familiar with ML concept, then Great !!!... Most of the things will make sense to you with much simpler explanation. And if you don't, it's still fine as I designed this blog assuming that you HAVE heard about Deep Learning but never learn knew what it really is...
 
 And for people who're familiar with ML concepts, we're going to cover only the supervised learning part of deep learning concepts and while going through this blog, you'll understand how some concepts are very similar to the ones of linear regression. That might have been a spoiler for people who're not familiar with linear regression, so let's proceed to the actual content without any more spoilers.
+
+
+## Introduction to Deep Learning
+
+Let's start from the beginning, What is <abbr title="Artificial Intelligence">AI</abbr>? What is <abbr title="Machine Learning">ML</abbr>? And most importantly What is <abbr title="Deep Learning">DL</abbr>? Why do we need it?
+
+### What is Artificial Intelligence?
+
+In the early days, Artificial Intelligence had a complete different ideology compared to what we see today. Initially, AI was approached as more of a philosophical study, where researchers aimed to understand and replicate human-level intelligence using the mathematics and algorithms available at the time. This led to the development of a universal approach for problem-solving, known as [State Space Search](https://lmgt.org/?q=What+is+State+Space+Search+%3F "what is State Space Search?"). State Space Search is essentially a search algorithm that aims to find a solution state from a given initial state within a specified environment. Although this method has been optimized with [heuristic](https://letmegpt.com/?q=What%20is%20a%20Heuristic%20%3F "define heuristic") that resulted in [A* algorithm](https://lmgt.org/?q=What+is+A*+Algorithm+%3F), it is still not well-suited for more complex problems or diverse real-world applications.
+
+During that time, Field of AI was more focused on developing solutions and algorithms aimed at achieving human-like intelligence. The goal of replicating human intelligence was prioritized over more practical considerations, such as compute power and storage. This led to a wave of innovations that, over time, became more feasible and practical to implement in the real world, with optimizations tailored to specific problems.
+
+### What is Machine Learning?
+
+While AI is a border field that is more invested in replicating human-level intelligence, Machine Learning is a sub-field of Artificial Intelligence _(but still a broad field by itself)_ where the algorithms are designed in such a way that they learn from data. If you're wondering how ML differs from AI, well, I just told you—it's **DATA**. 
+
+Keep in mind that not all AI algorithms rely on data to mimic human-like intelligence, but machine learning is entirely data-dependent as it uses different approaches based on the provided data. So, whenever you hear someone say, "It's powered by AI" or something similar, it's machine learning all along, because there is no such great and bulky heuristic that can be replicated for a specific task based on the given data.
+
+#### Types of Machine Learning
+
+Machine learning uses many mathematical concepts to find interesting pattern in the data from which they can either predict or classify the incoming/future data. But finding patterns from such wide diversified data that comes in many forms & types requires different ways of approach while depending upon the given problem statement. So, let's take a moment to understand different type of machine learning algorithms/approaches...
+
+> Before we try to understand, let's get familiar with some terminology:
+> 
+> - **Data point:** Single instance of data values within given dataset.
+> - **Dataset:** A huge collection of data points for a specific problem.
+> - **Classes/Labelled Data:** The targeted data. In other words, the data we're trying to predict or classify. 
+> - **Classification:** A process of mapping a given data point with set of predefined label/class.
+> - **Dependent value:** The targeted value which needs to be estimated/classified.
+> - **Independent value(s):** The values which are used to determine the target value.
+> - **Regression:** A statistical process of estimating dependent value from one or more independent value.
+> - **Clustering:** Grouping related data point together based on their attributes.
+
+Now that's out of our way, Let's try to understand the three different types of machine learning approaches,
+
+- Supervised Learning
+- Unsupervised Learning
+- Reinforcement Learning
+
+Let's start with supervised learning. It's one of the most commonly used algorithms to predict or classify a data point into predefined class/label. We choose this approach when the whole dataset is labelled and has predefined output. Supervised learning deals with classification and regression based problem. In other words, determining which data point belong to which class and predicting values _(like numeric values)_. Let's see a few example to properly understand what supervised learning algorithms typically deal with...
+
+- Classifying whether a student pass this semester or not.
+- Classifying whether a give image is a cat, dog or human.
+- Predicting the price estimate of houses at a specified location.
+- Predicting the salary hike based on data from last 2 years, etc.
+
+Now that we have a good understanding of supervised learning, let's take a look at unsupervised learning. As the name suggests, unsupervised learning is kinda opposite to supervised learning. While supervised learning deals with labelled data, unsupervised learning deals with data with no labels. Basically Unsupervised learning handles problems like Clustering, Association rule learning, etc. In other words, group related data points together based on their merits or specifying a relationship between data points. Let's see a few example for unsupervised learning...
+
+- Clustering related book genres.
+- Clustering credit card transaction to find fraudulent transactions.
+- Suggesting related or complementary items that you have added to your cart on an e-commerce website.
+- Recommending movies or series based on your watch history.
+
+Now, it's time of reinforcement learning. Unlike supervised or unsupervised learning, reinforcement learning deals with real-time interaction. The model learns from interacting with its environment based on trail and error method. Whenever the model makes a mistake, it will be penalized and when it succeeds it will be rewarded. The roots of these concepts go way back 20th Century, and it's a wide concept on its own. All the application which required real-time interaction by analyzing its environment uses reinforcement concepts internally. Some of the widely used applications of this approach are as follows,
+
+- Self-driving cars
+- Robotics
+- Personalized health monitoring
+- Manufacturing
+
+Now that we have coved all the types of machine learning, we can categorize them as following,
+
+![Types of ML](/dark/types-of-ml.svg){: .dark}
+![Types of ML](/light/types-of-ml.svg){: .light}
+
+Awesome, Now let's see where Deep Learning comes into all of this madness...
+
+### What is Deep Learning?
+
+Deep Learning is a sub-field of Machine Learning where the whole architecture is build up on a key foundational algorithm known as Perceptron. All DL model architecture stacks layers and layers of these perceptrons to build complex model _(commonly referred as "neural nets")_ to resolve their specified problems. That's all the difference that is... 
+
+DL is ML but uses a different approach/architecture that is heavily inspired from human brain. The Perceptron is _"the algorithm"_ that I was hinting in the [Overview section](#overview "goto overview section"). We're going to learn so much about the Perceptron algorithm in the upcoming section, So don't worry too much about it.
+
+> Even though, DL is a subset of ML. It's not much different from the actual approaches that are commonly used in ML. In other word, DL is also categorized into three type i.e.,
+>
+> - Supervised Learning
+> - Unsupervised Learning
+> - Reinforcement Learning
+>
+> With the only difference being the architecture that is being implemented. The whole logic and mathematical concepts are same, but implemented within neural networks _(layers of perceptrons)_.
+>
+>> And in this blog we're implementing supervised learning algorithm in a simple deep neural net called Multi-layered perceptron.
+{: .prompt-info}
+
+<abbr title="for your information">FYI</abbr>, Deep Learning is NOT a new topic that was founded recently. It's an pretty old concept that was resurfaced---they exploded in popularity due to the significant performance observed from [AlexNet](https://youtu.be/5MvkxY0A6AM?si=wfUn9XQV2dHKi-HE "short video about AlexNet") during the ImageNet competition back in 2012 and more recently due to the transformer architecture that build LLMs like ChatGPT. 
+
+Let's take a step back and see, why such an old sub-field of machine learning is gain popularity in recent years...
+
+Deep learning architectures are designed in such a way that, they ingest huge amounts of data by burning large scale of resources _(both in terms of compute and storage)_ just to work as expected. And at the time when these concepts were introduced---have very smaller amount & less diverse data with limited resources, which were a huge blocker that stop them from showing their true potential. But as the time passed by, the computing and storage capabilities has increased and huge volumes of data are being generated and stored every day. In other words, all the requirements for Deep Learning architectures to show their potential have met and they did show us the amazing result in forms of LLMs built by various tech gaints.
+
+While dealing with AI algorithms/models, there lies an important concept for researcher, developers and people in general to understand the internal working of these algorithms and models, this is called **"Explainability of AI"**. When coming to deep learning, it more of a black box. You design the architecture, provide the data and you get the result, but no one in the world can understand why each layer and each perceptron is valued in a certain way. You CAN make an educated guess of what might happen at each layer, but nobody is exactly sure what really each perceptron in the each layer represents.
+
+Despite poor explainability of deep learning models, some complex architectures like LLMs are in huge demand only due to it's end result. So, sometimes it's the result that everyone's after not the internal working. But this should not stop you from searching for the actual truth behind it.
+
+> Remember folks, Deep Learning models/algorithms are designed for huge volumes of data that requires huge compute power. So it's always wise to analyze your problem statement and proceed only when you meet the following criteria:
+>
+> - [x] Has huge volumes of data. _(at least 100,000 datapoint)_
+> - [x] Has huge compute power. _(GPUs depending upon your data and task)_
+> - [x] Requires less or no explainability.
+>
+> These are the few important thing you need to keep in mind to ensure whether deep learning is the right choice for your use case or not. By checking this list, you can save your resource and find another better way that could be a potential solution for you use case.
+{: .prompt-warning}
+
+Now that we have seen what AI, ML and DL are... Let's wrap up this section with a simple venn diagram with various algorithms spanning from AI to DL.
+
+![AI-ML-DL Venn Diagram with some algorithms](/dark/venn-diagram.svg){: .dark}
+![AI-ML-DL Venn Diagram with some algorithms](/light/venn-diagram.svg){: .light}
+
+### Overview of Basic Neural Network
+
+Now that we're solid with fundamental understanding of what is Deep Learning, Let's take an top view of a typical neural network and get familiar with different part of the this architecture before we zoom into each of them later down this blog.
+
+Whenever you google about Deep-Learning/Neural-Net or hear people give presentation about them, You find the following image commonly everywhere... Well, this is a pictorial representation of a typical Neural Network...
+
+![Sample Neural Net](/dark/sample-neural-net.svg){: .dark}
+![Sample Neural Net](/light/sample-neural-net.svg){: .light}
+
+Every Deep Learning model/architecture is a network of layer of perceptron stacked up together. When the perceptron are stacked together in a linear layer, then it's called "Linear Layer". Linear layers are the most common in deep learning models and can be found in most of the deep learning models and architectures. And when we connect these layers of perceptrons together as a network, we call it Neural Networks. As time passed by, many researches and developers have invented various way to connect the perceptrons and layers of perceptrons to make the most of these deep Neural Networks.
+
+As we can see the following image, the circle represent perceptron and the lines concept these layers of perceptrons are called weights and most of the times they are vaguely called as parameters. 
+
+> The actual meaning of parameters is $ weight + bias $, but most of the times bias are considered as part of weights and they are denoted as $ w_0 $ . Don't worry if it doesn't make much sense right now, we'll take a closer look in the upcoming sections.
+{: .prompt-info}
+
+![Explaining Neural Net](/dark/explain-neural-net.svg){: .dark}
+![Explaining Neural Net](/light/explain-neural-net.svg){: .light}
+
+A Deep Learning model typical consists of three types of layers as shown on above image and they are,
+
+- Input Layer
+- Hidden Layer
+- Output Layer
+
+Input layer is the layer available for mapping all the input attributes. Say if you're trying to build an model to predict which employee is going to get the employee of the month title, so you need to train model on data with different attributes like domain, number of leaves taken, amount of overtime, endorsement from his/her colleagues. The input layer is responsible for handling input attributes and passing them down the network. Thus, we can say that number of perceptrons in input layer is equal to number of attributes in a given dataset.
+
+As the name suggest, Output layer is the layer that is responsible to handle the output of the model. If we're talking about supervised learning, then count of perceptrons in this layer is equal to number resultant labels/classes if it's a classification or ends with an aggregator if it's an regression problem. If we take the above problem, since we're checking if a given employee could be employee of the month or not, there are two classes i.e., _"yes, he/she is the employee of the month"_ or _"no, he/she is not the employee of the month"_.
+
+Last but not the least, Hidden Layers. Hidden layer are also known as pre-activation layer and they are meant to distribute the data thought the network. This is part where the data is ingested into the network. During the training, after we pass the data the total error is calculated and spread though the network that make small changes to each perceptron at each layer so that when the data is passed it would preform better and closer and closer to actual answer.
+
+The term "Deep" in Deep Neural Network (or) in Deep Learning comes from the deep stacked layers and layers of perceptron in the hidden layer section. Now, that we're familiar with structure of a simple Neural Network, let's wrap this section by understanding How Deep Learning actually work...
+
+#### Internal Working of Deep Neural Network
+
+A typical Deep neural network consists of something more than interconnected layers and layers of perceptron. And in this sub-section, we're going to have an overall idea of how deep learning models learns and works---by understanding the following concepts,
+
+- Perceptron
+- Weight and Bias
+- Activation Function
+- Neural Network
+- Loss function
+- Optimization algorithm
+- Forward pass and backward pass
+
+While Building and Deep neural network, we combine different algorithm together that fits our use case. We'll start from perceptron, it's the foundational element deep learning alright. 
+
+Perceptrons are a simple algorithm that takes the input values, multiplies with various weights and passes the sum of the weights _(along with bias)_ thought an activation function to get the result. Let's break down each part of this statement to understand even better...
+
+- As we said, perceptron takes multiple input and multiplies it with it's weight. Now, why do we do that ?
+  - We assign different weights for each input value to represent the weighage of the result for that specific input attribute.
+  - Imagine if I say how can you determine whether more people are going to watch today's football match, You might say it depends on whether it's world cup or charity match _(or)_ maybe even you could say if Ronald is present there's chance of increase in people watching today's match.
+  - Each input has a different weighage and we use weights to represent that.
+- Then we mentioned that we sum up the weights along with bias.
+  - The bias is an additional value that helps the perceptron make predictions even when all input features are zero. It effectively shifts the decision boundary, allowing the perceptron to handle cases.
+  - And we sum up all the weight including bias to compute the net input for the activation function.
+- Last we mentioned that we pass it though activation function.
+  - Activation function is the function that determines whether perceptron "fires" or not. 
+  - In other words, activation function plays the role of decision maker telling whether the input meets the requirement for a certain condition.
+
+These perceptrons are not capable of handling complex problems and hence, they are stacked together in a network called Neural Network. Till this point, these are just stacks of perceptron layers with no meaning. So, we need to train them with huge volumes of data so that they learn from the data. Before we understand the learning process, we need to know two more things and they are,
+
+- Loss Function
+- Optimization algorithm
+
+Loss function goes by many names like objective function, error function and cost function. Anyways, Loss function is one of the core algorithm that calculates the total loss made my the model. Later this loss is distributed thought the Neural network and the respective weights and bias or in other words parameters are updates at each perceptron at each layer using optimization algorithms.
+
+Optimization algorithms is another core component of Neural network as they take up the responsibility of updating parameter _(weight and bias)_ thought the neural network. Always remember that Activation function, Loss function vary a lot from type of problem we're trying to solve.
+
+Now that we're familiar with all the require component of a Neural net, let's see how the Neural net learns from the data. But let's learn two more terminology for the whole explain to make more sense...
+
+- **Forward Pass/Propagation:** The input traverses though the whole neural network from starting to end.
+- **Backward Pass/Propagation:** The resultant error is passed backward from the output layer to the very beginning of the neural network and updates the parameters.
+
+And if you read though two terminologies, then you know exactly what's gonna happen but I'm gonna tell you out anyway. Let's try to understand step-by-step,
+
+- We defined our Neural Network with all the required Input, Hidden and Output layer along with suitable Activation function, Loss function and Optimization algorithms.
+- Then we pass the data thought Neural Network. In other words, a simple Forward pass where we iterate over data point from given training dataset.
+- After a single Forward pass, we take the predicted result of the current model and actual output as compute the loss using loss function.
+- Then during this backwards pass, we spread our error thought the Neural Network.
+- Then we use Optimization algorithm to minimize the loss by tweaking the weights and bias at each perceptron at each layer.
+- And we do it all again for a certain number of epochs _(where a single epoch represents a complete iteration over the whole training dataset)_.
+
+And that's how a Deep Neural Network learn from the data. It was always about updating those weights and bias to pick up the right patterns to capture the essence of the problem statement from the provided dataset. Here's an in-dept sequence diagram to wrap everything we learnt about internal working of a Deep Neural Network.
+
+```mermaid
+sequenceDiagram
+  participant Input Layer
+  participant Hidden Layer
+  participant Activator
+  participant Output Layer
+  participant Loss Function
+  participant Optimizer
+
+  Input Layer->>Hidden Layer: Linear Transformation
+  Hidden Layer->>Activator: Applying Activation
+  Activator->>Output Layer: Computing Output
+  Output Layer->Loss Function: Computing Loss
+  Input Layer-->>Loss Function: Forward Pass
+
+  Loss Function->>Output Layer: Calculating Gradient
+  Output Layer->>Activator: Calculating Gradient
+  Activator->>Hidden Layer: Calculating Gradient
+  Hidden Layer->> Input Layer: Calculating Gradient
+  Optimizer->>Output Layer: Updating Parameters
+  Optimizer->>Hidden Layer: Updating Parameters
+  Optimizer-->>Input Layer: Backward Pass
+```
+
+Don't worry if you don't understand the whole sequence diagram shown above. We'll get more detail in the following blog. Just make sure you have a proper idea of the internal working of a Deep Neural Network.
