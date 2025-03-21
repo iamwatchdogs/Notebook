@@ -416,3 +416,47 @@ sequenceDiagram
 ```
 
 Don't worry if you don't understand the whole sequence diagram shown above. We'll get more into the detail in the upcoming section, Starting with perceptron. As of now, just make sure you have a proper idea of the internal working of a Deep Neural Network, before you proceed to next section.
+
+## Perceptron
+
+Perceptron, the foundational element that draws the line between the machine learning and deep learning. In this section, we're going to take a closer look at the very fundamental algorithm of deep learning starting from it's very origin. Let's start from the very inspiration that led to the innovation i.e., biological neurons that are found in human brain.
+
+### Biological Neuron
+
+Let's start from the very beginning of the deep learning and take a look at biological neuron present within human brain. And before we proceed, I want to let you know that we're going to discuss ___just enough___ about biological neuron as required not more not less. With that in mind, let's begin shall we ???...
+
+The biological human mind is the core inspiration of the whole deep learning domain, well at least a small biological component on which human brain and nervous system is built upon. Even though many researches, scientists, neurologists couldn't understand human brain to its full extends to this very day, they were successful in laying out some of the core facts regarding the critical functionality of biological human brain. Biological human brain is a complex interconnected network of billions of biological neurons that some-what like the diagram below but at a microscopic-levels _(in terms of micrometers)_...
+
+![Biological Neuron](/dark/biological-neuron.svg){: .dark}
+![Biological Neuron](/light/biological-neuron.svg){: .light}
+
+These biological neuron communicate with two main mechanisms which can be oversimplified as **electrical impulses** and **chemical signals**. To understand the flow of information between these neurons like take a closer look at the various components within the biological neuron as shown below...
+
+![Components Of Biological Neuron](/dark/components-of-biological-neuron.svg){: .dark}
+![Components Of Biological Neuron](/light/components-of-biological-neuron.svg){: .light}
+
+From the above diagram, we can see that a biological neuron is a composition of various components like,
+
+- Dendrites
+- Soma
+- Axon
+- Synapse
+- Axon terminal
+
+Let's see how each one of them play their role in analyzing the information they receive and sending information to another neighboring neuron...
+
+Typically a neuron receives electrical impulses from another neuron _(either within brain or from nervous system)_ which are captured by dendrites that are present within the head of the neuron. When there are enough electrical impulses i.e., when it reaches a certain threshold, the neuron activates _(sometimes also referred as "fires")_ and passes the information down the axon egress through the synapse present within axon terminal.
+
+When the threshold is met and the electrical impulses are reaching axon terminal---causes the calcium ions _(Ca <sup>2+</sup>)_ to enter the neuron, making axon terminal trigger the release of neurotransmitters _(a.k.a chemical signals)_ present within axon terminal. These neurotransmitters are then released into Synapse which will later bind with the dendrites of the neighboring neurons.
+
+![Biological Connected Neuron](/dark/biological-connected-neuron.png){: .dark}
+![Biological Connected Neuron](/light/biological-connected-neuron.png){: .light}
+
+If this neighboring neuron is at resting state then its negatively charged within the soma and when the synapse of the active neuron binds with one of the dendrites that releases neurotransmitters, the sodium channels are opened and sodium ions _(Na<sup>+</sup>)_ rush into this inactive neighboring neuron making it more positively charged. And all of this happens so fast that it creates an electrical impulse. And the whole process repeats...
+
+I know I've oversimplified but have you noticed that till this point, we've visualized a single neuron to understand its core functionality but in reality this is actually very very complex network of billions of neuron that keeps build new neural pathways from each and every thing we do. I gotta say, it's an beautifully complex and very very very brilliant architecture that way out of the league compared with current state-of-the-art models. Just take a second to appreciate this masterpiece created by God.
+
+> Do you know that biological neuron are far superior to the ones which are using and represented using mathematical functions _(Perceptron)_ ? Further down the blog we'll take a look at a specific case which proves this statement.
+{: .prompt-tip}
+
+Now that we understand how biological neuron function within human brain, let's see how these little guys inspired to build deep learning models...
