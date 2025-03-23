@@ -256,7 +256,7 @@ Now that we have seen what AI, ML and DL are... Let's wrap up this section with 
 ![AI-ML-DL Venn Diagram with some algorithms](/light/venn-diagram.svg){: .light}
 
 
-### Why do we need it ?
+### Why do we need it?
 
 Before we move any further and learn more interesting things about Deep Learning, Let's pause for a moment think about it. Why do we need to do them in the first place ???...
 
@@ -417,7 +417,7 @@ sequenceDiagram
 
 Don't worry if you don't understand the whole sequence diagram shown above. We'll get more into the detail in the upcoming section, Starting with perceptron. As of now, just make sure you have a proper idea of the internal working of a Deep Neural Network, before you proceed to next section.
 
-## Perceptron
+## Evolution of Perceptron
 
 Perceptron, the foundational element that draws the line between the machine learning and deep learning. In this section, we're going to take a closer look at the very fundamental algorithm of deep learning starting from it's very origin. Let's start from the very inspiration that led to the innovation i.e., biological neurons that are found in human brain.
 
@@ -460,3 +460,95 @@ I know I've oversimplified but have you noticed that till this point, we've visu
 {: .prompt-tip}
 
 Now that we understand how biological neuron function within human brain, let's see how these little guys inspired to build deep learning models...
+
+### Artificial Neuron
+
+Artificial Neuron is mathematical representation of a biological neuron---which is more of an precursor architecture for the ones that are currently being used. It might be wise to call it more as an ___"inspirational representation of biological neuron"___, as we're learning these concepts from a pretty old research that was published around mid 19's. Clearly, numerous advancements and discoveries have been made in the field of neuroscience since the publication of the first deep learning research paper.
+
+You might be wondering---what is this research paper I was bragging about which I was mentioned way back in the [Why do we need it?](#why-do-we-need-it "go back to 'why do we need it?' section") sub-section. Well this is the research paper that is published by **Warren S. McCulloch** _(neuropsychologist)_ and **Walter Pitts** _(logician)_ way back in 1943 with title "[A Logical Calculus of the Ideas Immanent in Nervous Activity](https://www.cs.cmu.edu/~./epxing/Class/10715/reading/McCulloch.and.Pitts.pdf "view the published research paper")". Many people studied this research without releasing it; they are oversimplified and introduced as **McCulloch-Pitts Neuron**.
+
+And we're going to do the same here i.e., understanding the oversimplified concept of that core research while using terminologies & notions that help us stay on track and makes more sense as we progress though the next evolution of this proposed architecture.
+
+McCulloch-Pitts Neuron _(commonly referred as MP-Neuron)_ is a simple algorithm that defined the functionality of an typical overly simplified neuron that process the given information. And since this representation is heavily inspired from biological neuron, the input values are typical boolean values i.e., either $ 0 $ or $ 1 $ _(that represents false, true respectively)_.
+
+The MP-Neuron is capable of receiving multiple **Boolean input** _( i.e., $ \space x_k \in \\{ 0, 1 \\} $ )_ and these input values are aggregated _(in current context, it's summation)_ using an aggregator _(say $ g $)_ before the aggregated value is passed through the activation function which determine whether the neuron is activated/fired/excited or not. 
+
+In much simpler words, takes multiple boolean inputs, performs summation and returns boolean value based on the criteria of meeting the threshold. This is why sometime MP-Neuron are referred as **Thresholding logic**.
+
+And If we try to represent this idea pictorially, it's not much different from the connected biological neuron we have seen above _(at least if we look close enough)_...
+
+![](/dark/biological-vs-artificial-neuron.png){: .dark}
+![](/light/biological-vs-artificial-neuron.png){: .light}
+
+And if we put the whole definition mathematically, it would look something like this...
+
+$$
+\begin{align*}
+
+y &= f(g(\text{x})) \\\\
+  &= \begin{cases}
+        0 & \text{if} \space g(\text{x}) \lt \theta \\
+        1 & \text{if} \space g(\text{x}) \ge \theta
+    \end{cases} \\\\
+  &= \begin{cases}
+        0 & \text{if} \space \sum_{i=1}^n x_i \lt \theta \\\\
+        1 & \text{if} \space \sum_{i=1}^n x_i \ge \theta
+    \end{cases} \\\\
+  &= \begin{cases}
+        0 & \text{if} \space (x_1 + x_2 + x_3 + {...} + x_n ) \lt \theta \\\\
+        1 & \text{if} \space (x_1 + x_2 + x_3 + {...} + x_n ) \ge \theta
+    \end{cases} \\\\
+
+\text{Where,} \\
+y &\quad \text{is the final result or target value.} \\
+f &\quad \text{is the activation function.} \\
+\theta &\quad \text{is the threshold value.} \\
+g &\quad \text{is the aggregator.} \\
+\text{x} &\quad \text{is the vector of boolean inputs.}
+
+\end{align*}
+$$
+
+In case you're confused with what is happening with the mathematical expression up there, here's simple break down...
+
+- By definition, we said that MP Neuron is capable of taking multiple boolean input which is represented as vector $ \text{x} $ where every $ x_k \in \\{ 0, 1 \\} $.
+- Then these vector of boolean are aggregated using an aggregator which is represent using $ g $. In other words, we perform summation which is represented using function $ g $.
+
+$$
+g(\text{x}) = \sum_{i=1}^n x_i = (x_1 + x_2 + x_3 + {...} + x_n)
+$$
+
+- Now we use something called an activation function _(represented using $ \space f $)_ which basically returns a boolean value based on how well _"input of activation function"_ meets the threshold which is denoted using $ \theta $.
+
+$$
+\begin{align*}
+
+f(a) &= \begin{cases}
+            0 & \text{if} \space a \lt \theta \\
+            1 & \text{if} \space a \ge \theta
+        \end{cases}
+
+\end{align*}
+$$
+
+- By definition, we have to pass this aggregated value _(i.e., $ \space g(\text{x}) $)_ into activation function _(i.e., $ f $)_ to get the final result which is commonly referred as target value _(i.e., $ y $)_.
+
+$$
+y = f(g(\text{x})) 
+  = \begin{cases}
+        0 & \text{if} \space g(\text{x}) \lt \theta \\
+        1 & \text{if} \space g(\text{x}) \ge \theta
+    \end{cases}
+  = \begin{cases}
+        0 & \text{if} \space \sum_{i=1}^n x_i \lt \theta \\\\
+        1 & \text{if} \space \sum_{i=1}^n x_i \ge \theta
+    \end{cases}
+$$
+
+Now that we're more clear with the mathematical representation, Let's talk a bit more about these boolean inputs...
+
+Typically they are considered as two types: **exhibitory** and **inhibitory**. While most of the time we talk about $ x_k $ as they are the actually input values we're passing to the neuron---they are more of exhibitory in nature as they need to met a certain criteria or match a pattern to excite/activate/fire the neuron. There's also inhibitory type of input which most of don't talk much about but it in there, this is more of an static value that directly determines the output. If this inhibitory input is false, the by default the end-result will be zero i.e., $ y = 0 $, even though we're passing a whole vector of boolean input _(exhibitory)_.
+
+To make more sense of that explanation, let's take an example...
+
+Say I want to build an model to predict whether you understood the whole blog or not, I can pass all the values like `understoodIntroduction`, `understoodPrerequisites`, `hasBaseKnowledge`, and so on. Now these boolean values are exhibitory in nature as they tend of excite/activate/fire the neuron based on their combinations/configuration of given values. But there's an inhibitory which is present by mostly not consider, it can be something like `isBlogPublished`. Most of the time, we take this for granted as we can't get the exhibitory values without consider that value to be true. Say this inhibitory value is false i.e., `isBlogPublished` is false, then there no possible way you can understand the whole blog. Without the blog being published online and reading it, we can't expect anyone to understand it. I hope this clears the fog. 
