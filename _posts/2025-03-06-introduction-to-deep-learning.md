@@ -554,3 +554,196 @@ Typically they are considered as two types: **exhibitory** and **inhibitory**. W
 To make more sense of that explanation, let's take an example...
 
 Say I want to build an model to predict whether you understood the whole blog or not, I can pass all the values like `understoodIntroduction`, `understoodPrerequisites`, `hasBaseKnowledge`, and so on. Now these boolean values are exhibitory in nature as they tend of excite/activate/fire the neuron based on their combinations/configuration of given values. But there's an inhibitory which is present by mostly not consider, it can be something like `isBlogPublished`. Most of the time, we take this for granted as we can't get the exhibitory values without consider that value to be true. Say this inhibitory value is false i.e., `isBlogPublished` is false, then there no possible way you can understand the whole blog. Without the blog being published online and reading it, we can't expect anyone to understand it. I hope this clears the fog. 
+
+> Note that the topic of **exhibitory** and **inhibitory** are typically not covered in many course material and book as they are taken for granted i.e., considering inhibitory input as an active value just as the example we just discussed.
+>
+> Typically this concept is not covered in many course materials and books. However, I want to make sure you understand these concepts if they ever pop-up within your further learning _(since these concepts are discussed as a part of some academics and studies of neuroscience)_.
+{: .prompt-info}
+
+#### Can MP-Neuron Solve Real-World Problems?
+
+Even thought MP-Neuron sounds like fair representation of a biological neuron and might seem like a promising algorithm that can be used to model solutions for many problem statements. But all of these assumptions are made in a good faith with the only bases being <i><q>Neurons work perfectly well in human brain and maybe same goes with its mathematical representation</q></i>.
+
+In this section, let’s take a very simple problem statement and see whether this MP-Neuron is a possible way to model a solution around a compatible problem statement. In other words, we’re trying to see if this MP-Neuron can solve at least a problem statement or two---to consider this algorithm for modelling a solution around a data-intensive problem statement.
+
+If you remember, the MP-Neuron only deal with boolean input i.e., $ true $ / $ false $ (or) $ 1 $ / $ 0 $. Hence, we can only use this algorithm to model a solution for the problem statements that are either boolean operation themselves or a complex combination of these boolean operation $ w.r.t $ the number of inputs. The boolean operations such as...
+
+<ul class="w-100" style="display: flex;justify-content: space-evenly;flex-wrap: wrap;">
+  <div>
+    <li><code class="language-plaintext highlighter-rouge">NOT</code></li>
+    <li><code class="language-plaintext highlighter-rouge">OR</code></li>
+  </div>
+  <div>
+    <li><code class="language-plaintext highlighter-rouge">AND</code></li>
+    <li><code class="language-plaintext highlighter-rouge">NOR</code></li>
+  </div>
+  <div>
+    <li><code class="language-plaintext highlighter-rouge">NAND</code></li>
+    <li><code class="language-plaintext highlighter-rouge">XOR</code></li>
+  </div>
+</ul>
+
+Any problem statement which has an underlying/unknown pattern that CAN be represented using boolean operations _(such as the ones above)_ can be solved using MP-Neuron. So, If we could prove that MP-Neuron can showcase the functionalities of these fundamental boolean operations then we can say that all the problems whose input values are boolean values can be solved using MP-Neuron.
+
+So the main question is, Can the MP-Neuron showcase the functionality of those boolean operations ???...
+
+Let's consider the `OR` boolean operation... We all know that `OR` _(represented using $ \space \lor $ )_ operator function as following...
+
+|   a   |   b   | a $ \lor $ b |
+| :---: | :---: | :----------: |
+|   0   |   0   |       0      |
+|   0   |   1   |       1      |
+|   1   |   0   |       1      |
+|   1   |   1   |       1      |
+{: .w-100}
+
+So, if we want to showcase the `OR` operators functionality using MP-Neuron, we need understand and need to translate this logic---mathematically while following the structure/computational model of the MP-Neuron. Let's try to do that step-by-step...
+
+- From the truth table of `OR` table, we can see that `OR` operation requires two input values. So, our MP-Neuron receives two input as $ x_1, \space x_2 $ representing a and b from the above table respectively.
+- According to the MP-Neuron, we need to add the input values even before we think about how it reflects the final output. The next step after we get input is summation of these inputs.
+
+$$
+g(\text{x}) = \sum_{i=1}^{2} x_i = x_1 + x_2
+$$
+
+- Now that we've performed the aggregation in terms of MP-Neuron, we need to take aggregated value i.e., $ g(\text{x}) $ and find a relationship to the one that of `OR` operation. Let's try putting this into the truth table to understand if there's any relationship between this aggregated value and final result...
+
+  | $ x_1 $ | $ x_2 $ | $ g(\text{x}) = \sum_{i=1}^2 x_i $ | $ y = x_1 \lor x_2 $ |
+  | :-----: | :-----: | :--------------------------------: | :------------------: |
+  |    0    |    0    |                 0                  |          0           |
+  |    0    |    1    |                 1                  |          1           |
+  |    1    |    0    |                 1                  |          1           |
+  |    1    |    1    |                 2                  |          1           |
+  {: .w-100}
+
+- If we look the above truth table we can see that, if the aggregated value i.e., $ g(\text{x}) $ is greater than equal to $ 1 $ then the output i.e., $ y $ will be $ 1 $ or else $ 0 $. Thus, showcasing the `OR` operator functionality.
+
+$$
+y = f(g(\text{x}))
+  = \begin{cases}
+    1 & \text{if } g(\text{x}) \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+  = \begin{cases}
+    1 & \text{if } \sum_{i=1}^2 x_i \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+  = \begin{cases}
+    1 & \text{if } x_1 + x_2 \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+$$
+
+> If you observe closely and compare it with out initial equation back when we discussed in [MP-Neuron](#artificial-neuron "go back to the beginning of 'Artificial Neuron' section"), we can see that value $ 1 $ in our current problem statement is the threshold value $ \theta $.
+{: .prompt-tip}
+
+This is great!!!... we have proved that this MP-Neuron can replicate the `OR` boolean operation. But can this be replicate to remaining boolean operations ???...
+
+Well, the short answer is most of them. Here're some of the most of the boolean operation that can be modelled using MP-Neuron...
+
+$$
+\begin{array}{|c|c|c|c|}
+  \hline 
+    \text{NOT ( } \lnot x \text{ )} & 
+    \text{AND ( } x_1 \land x_2 \text{ )} &
+    \text{NOR ( } \lnot \text{( } x_1 \lor x_2 \text{ ) )} &
+    \text{NAND ( } \lnot \text{( } x_1 \land x_2 \text{ ) )}  \\
+  \hline \\
+    y = \begin{cases}
+        1 & \text{if } \sum_{i=1}^1 x_i \ge 1 \\\\
+        0 & \text{otherwise}
+      \end{cases} & 
+    y = \begin{cases}
+        1 & \text{if } \sum_{i=1}^2 x_i \ge 2 \\\\
+        0 & \text{otherwise}
+      \end{cases} & 
+    y = \begin{cases}
+        1 & \text{if } \sum_{i=1}^2 x_i \le 0 \\\\
+        0 & \text{otherwise}
+      \end{cases} & 
+    y = \begin{cases}
+        1 & \text{if } \sum_{i=1}^2 x_i \le 2 \\\\
+        0 & \text{otherwise}
+      \end{cases} \\\\
+  \hline  
+\end{array}
+$$
+
+> In case if you're wondering whether `NOR` and `NAND` equations are incorrect, rest assured they're correct. The $ \le $ sign is used to represent their negative behaviors of the original operations `OR` and `AND` repressively. For more clarification, please refer back to concepts of inequalities _(which are part of basic math specified in [prerequisites](#mathematics))_.
+{: .prompt-tip}
+
+Awesome!!!... Now we know that MP-Neuron is capable of implementing various boolean operations. 
+
+But what does $ g(\text{x}) = x_1 + x_2 \ge 1 $ inequality in terms of MP-Neuron---that is used in MP-Neuron to model and solution that could showcase the behavior of `OR` operation---even mean ?
+
+Let's try understanding the meaning of the relationship between this inequality by plotting the everything we have till this point on a cartesian plane i.e., on a graph with two dimensional XY-axis.
+
+Let's start by building a truth table to derive all the possible points...
+
+| $ x_1 $ | $ x_2 $ | $ g(\text{x}) = \sum_{i=1}^2 x_i $ | $ y = x_1 \lor x_2 $ | $ (x_1, \space x_2) $ |
+| :-----: | :-----: | :--------------------------------: | :------------------: | :-------------------: |
+|    0    |    0    |                 0                  |          0           |        ( 0, 0 )       |
+|    0    |    1    |                 1                  |          1           |        ( 0, 1 )       |
+|    1    |    0    |                 1                  |          1           |        ( 1, 0 )       |
+|    1    |    1    |                 2                  |          1           |        ( 1, 1 )       |
+{: .w-100}
+
+Now let's plot all the possible configurations/combinations as $ (x, \space y) $ points on the XY cartesian plane:
+
+![plotting points on cartesian plane](plotting-points-on-cartesian-plane.jpeg){: .w-75 .rounded-10}
+
+Great, we have plotted the all points on the cartesian plane. Before we try to understand the inequality, let's take a step back and understand what we were doing while modelling the `OR` operator using MP-Neuron computational model. Basically we're trying to find the threshold which draws the line which input values can activate the MP-Neuron or not...
+
+In other words, the $ x_1 + x_2 \ge 1 $ inequality is being used as expression to draw line that divides which aggregated value _(indirectly the input values)_ lies in which part of the plane that either results in true or false i.e., $ y = 1 \textit{ (or) } 0 $ respectively. This can be better visualize using the following graph...
+
+![OR Operation on 2D Cartesian Plane](or-operation-on-2d-cartesian-plane.jpeg){: .w-75 .rounded-10}
+
+As you can see the cartesian plane, the green part including the line drawn is consider as <q>positive-half of the plane</q> as the values are resulting in $ y = 1 $ and the red-part is the <q>negative-half of the plane</q> i.e., $ y = 0 $. And we're able to make this division based on $ x_1 + x_2 \ge 1 $ inequality.
+
+Now all of this is great, but till this point we're dealing with only two input and what about multiple inputs???... The MP-Neuron, by definition, should be capable of handling multiple input values right? then how can we visualize them?
+
+That's a lot of question, so let's take our `OR` operation model and try increase its inputs. Now we're passing 3 values to the MP-Neuron, so does the threshold change???... Of course Not, we need at least one of those input to be true _(or)_ 1 to get $ y = 1 $. Hence the thesholding logic remains the same...
+
+$$
+y = f(g(\text{x}))
+  = \begin{cases}
+    1 & \text{if } g(\text{x}) \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+  = \begin{cases}
+    1 & \text{if } \sum_{i=1}^n x_i \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+  = \begin{cases}
+    1 & \text{if } x_1 + x_2 + ... + x_n \geq 1 \\\\
+    0 & \text{otherwise}
+    \end{cases}
+$$
+
+Now how can we visualize it using the coordinate system???... Previously we had only two inputs and each one of them are presented within X-axis and Y-axis respectively but what about the third input? We can use Z-axis for that. Therefore, we're going to be visualizing in a 3D plane to understand how does this MP-Neuron separates into positive-half and negative-half.
+
+Let's start by writing the truth table for `OR` operator for three inputs,
+
+| $ x_1 $ | $ x_2 $ | $ x_3 $ | $ g(\text{x}) = \sum_{i=1}^3 x_i $ | $ y = x_1 \lor x_2 \lor x_3 $ | $ (x,\space y,\space z) = (x_1,\space x_2,\space x_3) $ |
+| :-----: | :-----: | :-----: | :--------------------------------: | :---------------------------: | :-----------------------------------------------------: |
+|    0    |    0    |    0    |                 0                  |               0               |                       ( 0, 0, 0 )                       |
+|    0    |    0    |    1    |                 1                  |               1               |                       ( 0, 0, 1 )                       |
+|    0    |    1    |    0    |                 1                  |               1               |                       ( 0, 1, 0 )                       |
+|    0    |    1    |    1    |                 2                  |               1               |                       ( 0, 1, 1 )                       |
+|    1    |    0    |    0    |                 1                  |               1               |                       ( 1, 0, 0 )                       |
+|    1    |    0    |    1    |                 2                  |               1               |                       ( 1, 0, 1 )                       |
+|    1    |    1    |    0    |                 2                  |               1               |                       ( 1, 1, 0 )                       |
+|    1    |    1    |    1    |                 3                  |               1               |                       ( 1, 1, 1 )                       |
+{: .w-100}
+
+Now that we have all the required information, let's plot it on a three dimensional cartesian plane to better visualize how MP-Neuron models a solution for `OR` operation,
+
+![OR Operator MP Neuron with 3 Inputs on 3D space](or-operation-on-3d-cartesian-plane.gif){: .rounded-10 .shadow}
+
+From the above GIF, you can see that multiple input can be represented using higher dimension cartesian plane but the only thing that says common across multiple is that MP-Neuron can model a solution for any problem for which it can create an $(n-1)$th dimension plane to divide n-dimensional space into postive-half and negative-half.
+
+And all of that is formally known as **Linearly Separability** _(typically called as <q>Linearly Separable</q>)_---which means the given problem statements can be solved using linear functions that separate the whole cartesian plane into two half where one half of the plane contains the values that result in $ y = 1 $ and another half where values result in $ y = 0 $.
+
+MP-Neuron is capable of handling any boolean operation which is Linearly separable. Now, you might be thinking---is there any other boolean operation which are not linearly separable? Well, the short answer is yes but well get to the part very soon... 
+
+But as of this section, we are sure that MP-Neuron is capable of solving real-world problem with only limitation being they has to be linearly separable.
