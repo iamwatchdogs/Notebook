@@ -12,6 +12,8 @@ math: true
 mermaid: true
 ---
 
+<style>img { border-radius: inherit; } </style>
+
 Deep learning is currently one of the most booming technologies, playing a major role in the _"OpenAI's ChatGPT era"_. Although it is built upon the transformer architecture—proposed by Google developers in 2017—the roots of this architecture go back to the very fundamentals that have shaped deep learning into what it is today. In this blog, we're going to explore a few key concepts behind this revolutionary technology...
 
 ## Motivation
@@ -449,8 +451,8 @@ Typically a neuron receives electrical impulses from another neuron _(either wit
 
 When the threshold is met and the electrical impulses are reaching axon terminal---causes the calcium ions _(Ca <sup>2+</sup>)_ to enter the neuron, making axon terminal trigger the release of neurotransmitters _(a.k.a chemical signals)_ present within axon terminal. These neurotransmitters are then released into Synapse which will later bind with the dendrites of the neighboring neurons.
 
-![Biological Connected Neuron](/dark/biological-connected-neuron.png){: .dark}
-![Biological Connected Neuron](/light/biological-connected-neuron.png){: .light}
+![Biological Connected Neuron](/dark/biological-connected-neuron.png){: .dark .shadow .rounded-10}
+![Biological Connected Neuron](/light/biological-connected-neuron.png){: .light .shadow .rounded-10}
 
 If this neighboring neuron is at resting state then its negatively charged within the soma and when the synapse of the active neuron binds with one of the dendrites that releases neurotransmitters, the sodium channels are opened and sodium ions _(Na<sup>+</sup>)_ rush into this inactive neighboring neuron making it more positively charged. And all of this happens so fast that it creates an electrical impulse. And the whole process repeats...
 
