@@ -740,10 +740,42 @@ Now that we have all the required information, let's plot it on a three dimensio
 
 ![OR Operator MP Neuron with 3 Inputs on 3D space](or-operation-on-3d-cartesian-plane.gif){: .rounded-10 .shadow}
 
-From the above GIF, you can see that multiple input can be represented using higher dimension cartesian plane but the only thing that says common across multiple is that MP-Neuron can model a solution for any problem for which it can create an $(n-1)$th dimension plane to divide n-dimensional space into postive-half and negative-half.
+From the above GIF, you can see that multiple input can be represented using higher dimension cartesian plane but the only thing that says common across multiple is that MP-Neuron can model a solution for any problem for which it can create an $(n-1)$th dimension plane to divide n-dimensional space into positive-half and negative-half.
 
 And all of that is formally known as **Linearly Separability** _(typically called as <q>Linearly Separable</q>)_---which means the given problem statements can be solved using linear functions that separate the whole cartesian plane into two half where one half of the plane contains the values that result in $ y = 1 $ and another half where values result in $ y = 0 $.
 
 MP-Neuron is capable of handling any boolean operation which is Linearly separable. Now, you might be thinking---is there any other boolean operation which are not linearly separable? Well, the short answer is yes but well get to the part very soon... 
 
 But as of this section, we are sure that MP-Neuron is capable of solving real-world problem with only limitation being they has to be linearly separable.
+
+### Perceptron
+
+Perceptron is just an extension of MP-Neuron computational model that is used as the foundational element in every Deep learning architecture. In this section, we'll take a look into the very origins of the perceptron computational model and how it evolved from the MP-Neuron algorithm.
+
+Before we dive into the concepts of the perceptron... have you ever wondered why we need an evolved version of the MP neuron???
+
+The MP-Neuron is a solid computational model, a fair representation of a biological neuron, and it's been shown to solve linearly separable problems. So, why isn't it good enough?
+
+While MP-Neuron is capable of solving real-world problem and walking in the right direction of creating a proper computational that could be capable of solving various data-intensive computations, but it does comes with its fair share of disadvantage that are limiting its capabilities of handling much complex problems.
+
+Let's take a look into the de-facto definition of the MP-Neuron to understand the possible cons,
+
+> "MP-Neuron is a computational model that takes multiple boolean inputs, aggregates the inputs using an aggregator function _(summation)_ and then this aggregated value is passed through the activation function that determines whether the MP-Neuron fires or not. In other words, the output is based on whether the aggregated value has reached the threshold or not."
+
+Now that we have revisited the de-facto definition of MP-Neuron, let's try to dig out the limitation with the current MP-Neuron computational model...
+
+- By definition, the MP-Neuron is capable of handling **ONLY Boolean inputs**. This causes the following issues,
+  - Creates a **Computational Overhead** to convert non-boolean attributes to boolean inputs.
+  - Limits the number of problems that can be solved using this approach---since **NOT** all attributes in different problems can be converted/transformed into boolean values. _(example: number of calories of a person in a dataset used to predict risk of cardiovascular diseases)_
+- If you look close enough, the MP-Neuron computational model is more like a simple computation of nested [pure functions](https://www.geeksforgeeks.org/pure-functions/ "what is a pure functions") which basically maps the input values to its respective output. In other words, we **CAN NOT** see and prove that this computational model can learn from the given data.
+- Apart from the process discussed from the proof of [MP-Neuron capable of solving linearly separable](#can-mp-neuron-solve-real-world-problems "go back to the 'Can MP-Neuron solve Real-world Problems?' section") _(which is kinda unconventional and mostly theoretical)_, there is **NO** standardized or conventional method to compute the threshold value that can be used for any given problem and its mostly likely needed to be manually configured before hand.
+
+These are the huge disadvantages that limited the applications of MP-Neuron and limited further research in this direction.
+
+For a long time, these concepts and proposed computational models remained largely in the realm of research. It wasn’t until around 1960 that these ideas resurfaced, driven by one of the most groundbreaking inventions of the time.
+
+Frank Rosenblatt, a psychologist, created an electronic device inspired by the biological principles of the human brain, which is capable of learning. Initially, this device was simulated on an IBM 704 computer, one of the powerful mainframe computer during that time, at Cornell Aeronautical Laboratory during 1957.
+
+Later in 1962, Rosenblatt published a book titled <q cite="https://link.springer.com/chapter/10.1007/978-3-642-70911-1_20">Principles of Neurodynamics</q> expanding on his initial work and the concept behind his invention. He named his creation as **Perceptron**. This invention garnered significant global recognition, as the Perceptron---a device capable of learning---was considered a revolutionary breakthrough at the time.
+
+Frank Rosenblatt improved the initial MP-Neuron computational model by introduction the concepts of learning, thus making it Perceptron. Rosenblatt was heavily inspired by biological research in cognitive science and neuroscience which are currently categorized as [Connectionism theory](https://en.wikipedia.org/wiki/Connectionism). But the concepts of learning was heavily inspired from the concepts of Hebbian theory, which is more commonly known as Hebbian learning 
